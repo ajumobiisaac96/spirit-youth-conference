@@ -6,12 +6,12 @@ interface HeroProps {
 
 export default function Hero({ onRegisterClick }: HeroProps) {
   // Scroll to the ImageSection
-  const handleLearnMore = () => {
-    const el = document.getElementById("image-section");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleLearnMore = () => {
+  //   const el = document.getElementById("image-section");
+  //   if (el) {
+  //     el.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <section
