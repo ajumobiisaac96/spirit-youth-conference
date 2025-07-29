@@ -119,7 +119,8 @@ export default function RegistrationModal({
       // Redirect to WhatsApp after 3 seconds
       setTimeout(() => {
         // Replace with your actual WhatsApp group link
-        const whatsappLink = "https://chat.whatsapp.com/your-group-link-here";
+        const whatsappLink =
+          "https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g";
         window.open(whatsappLink, "_blank");
 
         // Close modal and reset form
