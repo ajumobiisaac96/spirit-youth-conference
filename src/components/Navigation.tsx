@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/Logo.png";
 
 interface NavigationProps {
   onRegisterClick: () => void;
@@ -32,7 +34,7 @@ export default function Navigation({ onRegisterClick }: NavigationProps) {
         {/* Logo */}
         <div className="text-xl font-bold text-gray-800">
           <img
-            src={logo}
+            src={logo || "/placeholder.svg"}
             alt="Spirit Youth Conference Logo"
             className="h-8 w-auto inline-block"
           ></img>
@@ -101,7 +103,7 @@ export default function Navigation({ onRegisterClick }: NavigationProps) {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+                  d="M6 18L18 6M6 6l12 12M6 12l12 12"
                 />
               </svg>
             ) : (
