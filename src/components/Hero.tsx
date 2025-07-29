@@ -40,12 +40,12 @@ export default function Hero({ onRegisterClick }: HeroProps) {
           >
             Register
           </button>
-          <button
+          {/* <button
             onClick={handleLearnMore}
             className="px-8 py-3 bg-white border border-blue-400 text-blue-700 rounded-full hover:bg-blue-100 hover:scale-105 transition-all duration-300 ease-out font-medium shadow-lg hover:shadow-xl transform"
           >
             Learn More
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

@@ -70,17 +70,17 @@ export default function Navigation({ onRegisterClick }: NavigationProps) {
 
         {/* Desktop Action Buttons */}
         <div className="hidden md:flex items-center space-x-3">
-          <button
+          {/* <button
             onClick={onRegisterClick}
             className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 transition-colors text-sm"
           >
             Register
-          </button>
+          </button> */}
           <button
-            onClick={() => scrollToSection("newsletter")}
+            onClick={onRegisterClick}
             className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors text-sm"
           >
-            Join
+            Register
           </button>
         </div>
 
@@ -158,17 +158,17 @@ export default function Navigation({ onRegisterClick }: NavigationProps) {
 
             {/* Mobile Action Buttons */}
             <div className="flex flex-col space-y-2 pt-3 border-t border-gray-200">
-              <button
+              {/* <button
                 onClick={handleRegisterClick}
                 className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 transition-colors text-sm text-center"
               >
                 Register
-              </button>
+              </button> */}
               <button
-                onClick={() => scrollToSection("newsletter")}
+                onClick={handleRegisterClick}
                 className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors text-sm text-center"
               >
-                Join
+                Register
               </button>
             </div>
           </div>
