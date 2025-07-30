@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+"use client";
+
+import type React from "react";
+import { useState } from "react";
 import { databases, DATABASE_ID, COLLECTION_ID, ID } from "../lib/appwrite";
 
 interface RegistrationModalProps {
@@ -19,6 +22,7 @@ export default function RegistrationModal({
     ministry: "",
     attendanceDays: [] as string[],
     immersionExplosive: "",
+    numberOfChildren: "" as number | "", // Added for conditional input
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -29,10 +33,10 @@ export default function RegistrationModal({
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "number" ? (value === "" ? "" : Number(value)) : value,
     }));
     // Clear error when user starts typing
     if (error) setError("");
@@ -50,35 +54,43 @@ export default function RegistrationModal({
 
   const validateForm = () => {
     if (!formData.Name.trim()) {
-      setError("Names required");
+      setError("Full Name is required.");
       return false;
     }
     if (!formData.email.trim()) {
-      setError("Email is required");
+      setError("Email is required.");
       return false;
     }
     if (!formData.phone.trim()) {
-      setError("Phone number is required");
+      setError("Phone number is required.");
       return false;
     }
     if (!formData.gender) {
-      setError("Please select your gender");
+      setError("Please select your gender.");
       return false;
     }
     if (!formData.address.trim()) {
-      setError("Address is required");
+      setError("Address is required.");
       return false;
     }
     if (!formData.ministry.trim()) {
-      setError("Ministry/Church field is required");
+      setError("Ministry/Church field is required.");
       return false;
     }
     if (formData.attendanceDays.length === 0) {
-      setError("Please select at least one attendance day");
+      setError("Please select at least one attendance day.");
       return false;
     }
     if (!formData.immersionExplosive) {
-      setError("Please answer the Immersion Explosive question");
+      setError("Please answer the children attendance question.");
+      return false;
+    }
+    // Conditional validation for numberOfChildren
+    if (
+      formData.immersionExplosive === "yes" &&
+      (!formData.numberOfChildren || Number(formData.numberOfChildren) <= 0)
+    ) {
+      setError("Please enter a valid number of children (must be 1 or more).");
       return false;
     }
     return true;
@@ -109,6 +121,10 @@ export default function RegistrationModal({
           ministry: formData.ministry.trim(),
           attendanceDays: formData.attendanceDays,
           immersionExplosive: formData.immersionExplosive,
+          numberOfChildren:
+            formData.immersionExplosive === "yes"
+              ? Number(formData.numberOfChildren)
+              : null, // Send null if not applicable
           registrationDate: new Date().toISOString(),
         }
       );
@@ -155,6 +171,7 @@ export default function RegistrationModal({
       ministry: "",
       attendanceDays: [],
       immersionExplosive: "",
+      numberOfChildren: "", // Reset this field
     });
     setIsSuccess(false);
     setError("");
@@ -324,7 +341,10 @@ export default function RegistrationModal({
                   <span className="text-red-500">*</span>
                 </label>
                 <div className="space-y-2">
-                  {["August 9th, 2025", "August 10th, 2025"].map((day) => (
+                  {[
+                    "Saturday, August 9th, 2025 (8:30 AM)",
+                    "Sunday, August 10th, 2025 (3:00 PM)",
+                  ].map((day) => (
                     <label key={day} className="flex items-center">
                       <input
                         type="checkbox"
@@ -360,6 +380,25 @@ export default function RegistrationModal({
                   <option value="no-children">I don't have children</option>
                 </select>
               </div>
+
+              {/* Conditional input for number of children */}
+              {formData.immersionExplosive === "yes" && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Number of Children <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="numberOfChildren"
+                    value={formData.numberOfChildren}
+                    onChange={handleInputChange}
+                    min="1"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter number of children"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              )}
 
               <button
                 type="submit"

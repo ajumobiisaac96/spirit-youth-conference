@@ -27,9 +27,9 @@ export default function Hero({ onRegisterClick }: HeroProps) {
 
         <p className="text-lg md:text-xl text-blue-900 mb-8 max-w-3xl mx-auto transform transition-all duration-1000 ease-out animate-fade-in-up animation-delay-400">
           Join us for an inspiring weekend filled with faith, fellowship, and
-          power. The conference will take place from{" "}
-          <span className="font-bold text-blue-800">
-            August 9th (8:30am) - 10th (3pm), 2025.
+          power. The conference will take place from
+          <span className="font-bold text-blue-800 ml-1">
+            August 9th-10th, 2025.
           </span>
         </p>
 
