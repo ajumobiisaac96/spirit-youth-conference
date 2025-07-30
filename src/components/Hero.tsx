@@ -29,7 +29,7 @@ export default function Hero({ onRegisterClick }: HeroProps) {
           Join us for an inspiring weekend filled with faith, fellowship, and
           power. The conference will take place from{" "}
           <span className="font-bold text-blue-800">
-            August 9th-10th, 2025.
+            August 9th (8:30am) - 10th (3pm), 2025.
           </span>
         </p>
 
