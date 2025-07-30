@@ -21,11 +21,11 @@ export default function Newsletter() {
     <section id="newsletter" className="bg-gray-50 py-12 md:py-20">
       <div className="max-w-2xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-          Join the Spirit Youth Conference
+          subscribe Now
         </h2>
         <p className="text-gray-600 mb-8">
-          Register now to secure your spot at the Spirit Youth Conference
-          happening on August 9th - August 10th, 2025!
+          subscribe now to get first-hand updates about our upcoming programs
+          and more. Stay connected with us!
         </p>
 
         {isSubmitted ? (
