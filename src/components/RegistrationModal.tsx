@@ -57,10 +57,11 @@ export default function RegistrationModal({
       setError("Full Name is required.");
       return false;
     }
-    if (!formData.email.trim()) {
-      setError("Email is required.");
-      return false;
-    }
+    // Email is no longer a compulsory field, so this validation is removed.
+    // if (!formData.email.trim()) {
+    //   setError("Email is required.");
+    //   return false;
+    // }
     if (!formData.phone.trim()) {
       setError("Phone number is required.");
       return false;
@@ -114,7 +115,7 @@ export default function RegistrationModal({
         ID.unique(),
         {
           Name: formData.Name.trim(),
-          email: formData.email.trim().toLowerCase(),
+          email: formData.email.trim().toLowerCase() || null, // Send null if email is empty
           phone: formData.phone.trim(),
           gender: formData.gender,
           address: formData.address.trim(),
@@ -261,7 +262,7 @@ export default function RegistrationModal({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email <span className="text-red-500">*</span>
+                  Email (optional)
                 </label>
                 <input
                   type="email"
