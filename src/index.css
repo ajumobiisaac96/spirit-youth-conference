@@ -32,6 +32,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden; /* Added to prevent horizontal scroll */
 }
 
 h1 {
@@ -92,6 +93,24 @@ button:focus-visible {
   }
 }
 
+/* Existing scroll-left keyframe for right-to-left movement */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(
+      -100%
+    ); /* Moves content to the left by its full width */
+  }
+}
+
+/* New custom utility class for Left-to-Right scrolling */
+.animate-scroll-left-reverse {
+  animation: scroll-left 20s linear infinite; /* Use the existing keyframe */
+  animation-direction: reverse; /* Reverse its direction for LTR movement */
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 1s ease-out forwards;
 }
@@ -118,7 +137,6 @@ button:focus-visible {
   animation-delay: 0.6s;
   opacity: 0;
 }
-
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;

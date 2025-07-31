@@ -132,7 +132,7 @@ export default function RegistrationModal({
       console.log("Document created successfully:", response);
       setIsSuccess(true);
 
-      // Redirect to WhatsApp after 3 seconds
+      // Redirect to WhatsApp after 5 seconds
       setTimeout(() => {
         // Replace with your actual WhatsApp group link
         const whatsappLink =
@@ -142,7 +142,7 @@ export default function RegistrationModal({
         // Close modal and reset form
         onClose();
         resetForm();
-      }, 3000);
+      }, 5000);
     } catch (error: any) {
       console.error("Registration failed:", error);
 
@@ -233,6 +233,12 @@ export default function RegistrationModal({
               <p className="text-gray-600 mb-4">
                 Thank you for registering for the Spirit Youth Conference.
                 You'll be redirected to our WhatsApp channel shortly.
+              </p>
+              <p className="text-blue-600 font-semibold mb-4">
+                <span className="inline-block animate-bounce mr-2">👇</span>
+                Please click the "Follow" button on the WhatsApp channel page to
+                stay updated!
+                <span className="inline-block animate-bounce ml-2">👇</span>
               </p>
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
             </div>
@@ -342,8 +348,8 @@ export default function RegistrationModal({
                 </label>
                 <div className="space-y-2">
                   {[
-                    "Saturday, August 9th, 2025 (8:30 AM)",
-                    "Sunday, August 10th, 2025 (3:00 PM)",
+                    "August 9th, 2025 (8:30 AM)",
+                    "August 10th, 2025 (3:00 PM)",
                   ].map((day) => (
                     <label key={day} className="flex items-center">
                       <input

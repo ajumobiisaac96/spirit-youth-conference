@@ -89,6 +89,16 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href="https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
+                >
+                  WhatsApp Channel
+                </a>
+              </li>
+              <li>
+                <a
                   href="#"
                   className="text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
                 >

@@ -1,61 +1,33 @@
-import type React from "react";
-
-import { useState } from "react";
+"use client";
 
 export default function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setEmail("");
-      }, 3000);
-    }
-  };
+  const whatsappChannelLink =
+    "https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g";
 
   return (
     <section id="newsletter" className="bg-gray-50 py-12 md:py-20">
       <div className="max-w-2xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-          subscribe Now
+          Stay Connected!
         </h2>
         <p className="text-gray-600 mb-8">
-          subscribe now to get first-hand updates about our upcoming programs
-          and more. Stay connected with us!
+          Join our WhatsApp channel to get more updates about the Spirit Youth
+          Conference, exclusive content, and important announcements. Stay
+          connected with us!
         </p>
 
-        {isSubmitted ? (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-            Thank you for subscribing! We'll keep you updated.
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4"
-          >
-            <input
-              type="email"
-              placeholder="Your email here"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors font-medium"
-            >
-              Submit
-            </button>
-          </form>
-        )}
+        <a
+          href={whatsappChannelLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors font-medium"
+        >
+          Follow WhatsApp Channel
+        </a>
 
-        <p className="text-sm text-gray-500">
-          {/* By clicking Submit, you agree to our Terms and Conditions. */}
+        <p className="text-sm text-gray-500 mt-4">
+          Click the "Follow" button on the WhatsApp channel page to receive
+          updates.
         </p>
       </div>
     </section>
