@@ -93,22 +93,21 @@ button:focus-visible {
   }
 }
 
-/* Existing scroll-left keyframe for right-to-left movement */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
+/* New custom animation for the "beeping" effect */
+@keyframes pulse-effect {
+  0%,
   100% {
-    transform: translateX(
-      -100%
-    ); /* Moves content to the left by its full width */
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02); /* Slightly larger scale */
+    opacity: 0.9; /* Slightly less opaque */
   }
 }
 
-/* New custom utility class for Left-to-Right scrolling */
-.animate-scroll-left-reverse {
-  animation: scroll-left 20s linear infinite; /* Use the existing keyframe */
-  animation-direction: reverse; /* Reverse its direction for LTR movement */
+.animate-pulse-effect {
+  animation: pulse-effect 2s ease-in-out infinite;
 }
 
 .animate-fade-in-up {

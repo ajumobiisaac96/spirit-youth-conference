@@ -5,13 +5,13 @@ export default function ScrollingMessage() {
     "https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g";
   const messageContent = (
     <>
-      📢 Stay updated! Join our WhatsApp channel for the latest conference news
-      and exclusive content!{" "}
+      📢 Stay updated! Join our WhatsApp channel to get more updates about the
+      Spirit Youth Conference{" "}
       <a
         href={whatsappChannelLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline hover:no-underline font-semibold text-white"
+        className="underline hover:no-underline font-semibold text-red-900"
       >
         Click here to join!
       </a>
@@ -19,16 +19,8 @@ export default function ScrollingMessage() {
   );
 
   return (
-    <div className="sticky top-0 z-50 bg-red-600 text-white text-sm py-2 shadow-md overflow-hidden w-screen">
-      {" "}
-      {/* Added w-screen and ensured overflow-hidden */}
-      {/* Use a custom utility class for the LTR animation */}
-      <div className="flex flex-nowrap min-w-max animate-scroll-left-reverse">
-        {/* Duplicate content multiple times to ensure continuous scrolling */}
-        <span className="inline-block px-8">{messageContent}</span>
-        <span className="inline-block px-8">{messageContent}</span>
-        <span className="inline-block px-8">{messageContent}</span>
-      </div>
+    <div className="sticky top-0 z-50 bg-red-200 bg-opacity-80 border border-red-400 text-red-800 text-sm py-2 shadow-md text-center animate-pulse-effect">
+      {messageContent}
     </div>
   );
 }
