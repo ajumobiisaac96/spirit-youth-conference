@@ -28,6 +28,9 @@ export default function RegistrationModal({
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  const whatsappChannelLink =
+    "https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g"; // Define it here
+
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -57,11 +60,6 @@ export default function RegistrationModal({
       setError("Full Name is required.");
       return false;
     }
-    // Email is no longer a compulsory field, so this validation is removed.
-    // if (!formData.email.trim()) {
-    //   setError("Email is required.");
-    //   return false;
-    // }
     if (!formData.phone.trim()) {
       setError("Phone number is required.");
       return false;
@@ -133,17 +131,7 @@ export default function RegistrationModal({
       console.log("Document created successfully:", response);
       setIsSuccess(true);
 
-      // Redirect to WhatsApp after 5 seconds
-      setTimeout(() => {
-        // Replace with your actual WhatsApp group link
-        const whatsappLink =
-          "https://whatsapp.com/channel/0029VbB17mtGk1FmihHB3k3g";
-        window.open(whatsappLink, "_blank");
-
-        // Close modal and reset form
-        onClose();
-        resetForm();
-      }, 5000);
+      // The user will now click a button to go to the WhatsApp channel on the success screen.
     } catch (error: any) {
       console.error("Registration failed:", error);
 
@@ -233,15 +221,18 @@ export default function RegistrationModal({
               </h3>
               <p className="text-gray-600 mb-4">
                 Thank you for registering for the Spirit Youth Conference.
-                You'll be redirected to our WhatsApp channel shortly.
+                <br />
+                Please click the button below to join our WhatsApp channel for
+                important updates!
               </p>
-              <p className="text-blue-600 font-semibold mb-4">
-                <span className="inline-block animate-bounce mr-2">👇</span>
-                Please click the "Follow" button on the WhatsApp channel page to
-                stay updated!
-                <span className="inline-block animate-bounce ml-2">👇</span>
-              </p>
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
+              <a
+                href={whatsappChannelLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors font-medium shadow-lg"
+              >
+                Join WhatsApp Channel Now!
+              </a>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -304,7 +295,6 @@ export default function RegistrationModal({
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                  {/* <option value="other">Other</option> */}
                 </select>
               </div>
 
@@ -406,6 +396,18 @@ export default function RegistrationModal({
                   />
                 </div>
               )}
+
+              {/* Announcement before submit button - now without the button */}
+              <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-md text-center">
+                <p className="font-semibold text-lg mb-2">
+                  Important Information!
+                </p>
+                <p className="text-sm">
+                  To receive updates and important announcements about the
+                  Spirit Youth Conference, please join our official WhatsApp
+                  channel immediately after registering. Thank you.
+                </p>
+              </div>
 
               <button
                 type="submit"
