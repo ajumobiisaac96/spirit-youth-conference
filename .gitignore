@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Appwrite Data Export Script (contains sensitive API key)
+/scripts/exportData.js
